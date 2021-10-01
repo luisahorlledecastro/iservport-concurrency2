@@ -1,4 +1,4 @@
 package com.iservport.concurrency
 package domain
 
-case class Player ()
+case class Player(hand: Hand, colour: CardColour)

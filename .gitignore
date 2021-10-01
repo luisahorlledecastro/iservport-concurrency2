@@ -8,3 +8,8 @@ node_modules/
 /bower_components/*
 /.bsp/
 /.idea/
+
+.bloop/
+.metals/
+.vscode/
+metals.sbt
