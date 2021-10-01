@@ -3,7 +3,7 @@ package domain
 
 import scala.util.Random
 
-case class CardDeck () {
+object CardDeck {
 
   val all: Array[GameCard] = {
     for {
