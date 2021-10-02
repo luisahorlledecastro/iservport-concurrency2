@@ -3,11 +3,8 @@ package domain
 
 import scala.collection.mutable
 
-case class Game(playerRed: Player, playerBlack: Player) {
-
-  val shuffled: Seq[GameCard] = CardDeck.shuffle()
-  val (heap: mutable.ArrayBuffer[GameCard], table: mutable.ArrayBuffer[GameCard]) =
-    shuffled.partition(_.face.isNumeric)
+case class Game(playerRed: Player, playerBlack: Player, heap: mutable.ArrayBuffer[GameCard],
+                table: mutable.ArrayBuffer[GameCard]) {
 
   def isGameOver(player: Player) = {
 
@@ -19,7 +16,11 @@ object Game {
   def apply(): Game = {
     val playerRed: Player = Player(Hand(Seq()), CardColour.RED)
     val playerBlack: Player = Player(Hand(Seq()), CardColour.BLACK)
-    Game(playerRed, playerBlack)
+    val shuffled: Seq[GameCard] = CardDeck.shuffle()
+    val (heap: mutable.ArrayBuffer[GameCard], table: mutable.ArrayBuffer[GameCard]) =
+      shuffled.partition(_.face.isNumeric)
+
+    Game(playerRed, playerBlack, heap, table)
   }
 
   val fullHand = CardFace.values().filterNot(_.isNumeric).map(_.name()).mkString
@@ -29,5 +30,7 @@ object Game {
 
   def isGameOver(player: Player): Boolean =
     player.hand.cards.map(_.face).filterNot(_.isNumeric).map(_.name()).mkString == Game.fullHand
+  // card => card vira _.
+  // método filterNot tira o que não tem no parênteses
 }
 
