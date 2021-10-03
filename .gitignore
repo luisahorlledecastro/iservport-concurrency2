@@ -1,0 +1,16 @@
+/project/project
+/project/target
+target/
+/out
+.DS_Store
+node_modules/
+
+/bower_components/*
+/.bsp/
+/.idea/
+
+.bloop/
+.metals/
+.vscode/
+metals.sbt
+/iservport-concurrency.iml
